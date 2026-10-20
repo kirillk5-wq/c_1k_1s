@@ -24,19 +24,37 @@ int main()
     }
 	double max = MAX_OF_3(a, b, c);
 
-    if (fabs(max) < 1e-12)
+
+	if (fabs(a + b) < c || fabs(a + c) < b || fabs(b + c) < a)
+	{
+		printf("Triangle does not exist\n");
+	}
+
+    else if (fabs(max) < 1e-12)
 
     { printf("All sides are zero\n");
     }
 
-    if (fabs(a - b) < 1e-3 && fabs(a - c) < 1e-3 && fabs(b - c) < 1e-3)
+    else if (fabs(a - b) < 1e-3 && fabs(a - c) < 1e-3 && fabs(b - c) < 1e-3)
     {
         printf("Triangle has all equal sides\n");
     }
 
-    else {
-        printf("I don't know");
+    else if (fabs(a - b) < 1e-3 || fabs(a - c) < 1e-3 || fabs(b - c) < 1e-3)
+    {
+        printf("Triangle is isosceles\n");
     }
+
+    else if (fabs(a * a + b * b - c * c) < 1e-3 || fabs(a * a + c * c - b * b) < 1e-3 || fabs(b * b + c * c - a * a) < 1e-3)
+    {
+        printf("Triangle is right-angled\n");
+    }
+
+    else
+    {
+        printf("Triangle is scalene\n");
+    }
+
 
     return 0;
 }
